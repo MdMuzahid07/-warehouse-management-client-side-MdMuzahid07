@@ -53,11 +53,8 @@ const SignUp = () => {
 
     const [signInWithGoogle, guser, gloading, gerror] = useSignInWithGoogle(auth);
 
-    const handleGoogleSignIn = () => {
-        signInWithGoogle()
-    }
-
-
+    
+  
 
 
     return (
@@ -82,7 +79,7 @@ const SignUp = () => {
                     <span></span>
                 </div>
                 <button className='btn'>
-                    <img onClick={handleGoogleSignIn} src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/2048px-Google_%22G%22_Logo.svg.png" alt="" />
+                    <img onClick={() => signInWithGoogle()} src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/2048px-Google_%22G%22_Logo.svg.png" alt="" />
                 </button>
                 <button className='btn'>
                     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Octicons-mark-github.svg/480px-Octicons-mark-github.svg.png" alt="" />
