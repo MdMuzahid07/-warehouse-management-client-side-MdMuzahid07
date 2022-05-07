@@ -1,0 +1,47 @@
+.logos img {
+    width: 30px;
+    height: 30px;
+    background-color: rgb(241, 241, 241);
+    margin-right: 1rem;
+    border-radius: 5px;
+}
+
+.subscribe input {
+    border: none;
+    padding: 5px;
+    background-color: black;
+}
+
+.subscribe button {
+    border: none;
+    padding: 5px;
+    color: white;
+    background-color: rgb(255, 0, 0);
+}
+
+
+ul h5 {
+    color: rgb(194, 194, 194);
+}
+
+ul li {
+    list-style: none;
+}
+
+ul a {
+    text-decoration: none;
+    color: rgb(194, 194, 194);
+}
+
+ul a:hover {
+    color: red;
+}
+
+
+h5 {
+    color: rgb(194, 194, 194);
+}
+
+p {
+    color: rgb(194, 194, 194);
+}
