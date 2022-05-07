@@ -1,0 +1,5 @@
+.slider img {
+    height: 500px;
+    object-fit: contain;
+    object-position: center center;
+}
