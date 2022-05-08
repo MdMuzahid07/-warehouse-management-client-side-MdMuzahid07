@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
 
 import { useCreateUserWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
@@ -8,7 +8,7 @@ import { toast } from 'react-toastify';
 const SignUp = () => {
     const navigate = useNavigate();
 
-    const navigateLogin = event => {
+    const navigateLogin = () => {
         navigate('/login')
     }
 
@@ -20,18 +20,28 @@ const SignUp = () => {
         error,
       ] = useCreateUserWithEmailAndPassword(auth);
 
-      console.log(user)
+      
 
-      if(!user) {
+    // google signIn
+
+    const [signInWithGoogle, guser, gloading, gerror] = useSignInWithGoogle(auth);
+
+
+      if(!user || guser) {
           toast(error)
       }
 
-      if(user) {
+
+      if(user || guser) {
           toast('SignUp Complete')
-          navigate('/home')
       }
-      if(error) {
-          toast(error)
+      if(error || gerror) {
+          if(error) {
+            toast(error)
+          }
+          else {
+              toast(gerror)
+          }
       }
 
 
@@ -48,10 +58,6 @@ const SignUp = () => {
 
     }
 
-
-    // google signIn
-
-    const [signInWithGoogle, guser, gloading, gerror] = useSignInWithGoogle(auth);
 
     
   

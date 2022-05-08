@@ -11,6 +11,7 @@ import Products from './components/Products/Products';
 import ManageItems from './components/ManageItems/ManageItems';
 import MyItems from './components/MyItems/MyItems';
 import { ToastContainer } from 'react-bootstrap';
+import RequireAuth from './components/RequireAuth/RequireAuth';
 
 
 function App() {
@@ -20,11 +21,23 @@ function App() {
         <Routes>
           <Route path='/' element={<Home></Home>}></Route>
           <Route path='/home' element={<Home></Home>}></Route>
-          <Route path='/manageitems' element={<ManageItems></ManageItems>}></Route>
-          <Route path='/myitems' element={<MyItems></MyItems>}></Route>
+          <Route path='/manageitems' element={
+            <RequireAuth>
+              <ManageItems></ManageItems>
+            </RequireAuth>
+          }></Route>
+          <Route path='/myitems' element={
+            <RequireAuth>
+              <MyItems></MyItems>
+            </RequireAuth>
+          }></Route>
           <Route path='/login' element={<Login></Login>}></Route>
           <Route path='/signup' element={<SignUp></SignUp>}></Route>
-          <Route path='/products' element={<Products></Products>}></Route>
+          <Route path='/products' element={
+            <RequireAuth>
+              <Products></Products>
+            </RequireAuth>
+          }></Route>
           <Route path="/*" element={<Error></Error>}></Route>
         </Routes>
       <Footer></Footer>

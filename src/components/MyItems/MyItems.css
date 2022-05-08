@@ -1,0 +1,35 @@
+tr td img {
+    width: 100px;
+    height: 100px;
+    border-radius: 1rem;
+    border: 3px solid rgb(255, 208, 0);
+}
+
+tr td button {
+    border: none;
+    background-color: rgb(255, 0, 0);
+    color: white;
+    border-radius: 0.5rem;
+    padding: 0.5rem 2rem;
+    margin-right: 1rem;
+}
+
+tr td button:hover {
+    background-color: white;
+    color: red;
+}
+
+tr td .btn {
+    border: none;
+    background-color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
+    border: 2px solid black;
+    border-radius: 0.5rem;
+    padding: 0.5rem 2rem;
+    margin-right: 1rem;
+}
+
+tr td .btn:hover {
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+}

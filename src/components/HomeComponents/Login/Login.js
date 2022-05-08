@@ -1,14 +1,15 @@
 import React from 'react';
-import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
-import { Link, useNavigate } from 'react-router-dom';
+import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import auth from '../../../firebase.init';
 import './Login.css';
 
 const Login = () => {
     const navigate = useNavigate();
+    const location = useLocation();
 
-    const navigateSignUp = event => {
+    const navigateSignUp = () => {
         navigate('/signup')
     }
 
@@ -21,15 +22,27 @@ const Login = () => {
         error,
       ] = useSignInWithEmailAndPassword(auth);
 
+      
+      // sign in with google
+      const [signInWithGoogle, guser, gloading, gerror] = useSignInWithGoogle(auth);
 
-      if(user) {
+      let from = location.state?.from?.pathname || "/";
+
+      if(user|| guser) {
           toast('Login successfully');
-          navigate("/home");
+          navigate(from, {replace: true});
       }
 
-      else {
-          toast(error)
+      if(error || gerror) {
+          if(error) {
+            toast(error.message)
+          }
+          else {
+              toast(gerror.message)
+          }
       }
+
+
 
 
 
@@ -68,7 +81,7 @@ const Login = () => {
                     <span></span>
                 </div>
                 <button className='btn'>
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/2048px-Google_%22G%22_Logo.svg.png" alt="" />
+                    <img onClick={() => signInWithGoogle()} src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/2048px-Google_%22G%22_Logo.svg.png" alt="" />
                 </button>
                 <button className='btn'>
                     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Octicons-mark-github.svg/480px-Octicons-mark-github.svg.png" alt="" />
