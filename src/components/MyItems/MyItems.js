@@ -37,7 +37,6 @@ const MyItems = () => {
 
 
 
-
     return (
         <div className='container my-5'>
             <h1 className='text-warning text-center my-5'>All Products</h1>
@@ -58,7 +57,7 @@ const MyItems = () => {
                                 <td><img src={product.picture} alt="" /></td>
                                 <td>{product.price}</td>
                                 <td><button onClick={() => handleDeleteProduct(product._id)}>Delete</button>
-                                    <button className='btn'>Update</button>
+                                    <button  className='btn'>Update</button>
                                 </td>
                             </tr>
                         </tbody>

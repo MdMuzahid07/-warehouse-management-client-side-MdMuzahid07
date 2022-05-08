@@ -12,6 +12,7 @@ import ManageItems from './components/ManageItems/ManageItems';
 import MyItems from './components/MyItems/MyItems';
 import { ToastContainer } from 'react-bootstrap';
 import RequireAuth from './components/RequireAuth/RequireAuth';
+import Inventory from './components/HomeComponents/Inventory/Inventory';
 
 
 function App() {
@@ -21,6 +22,11 @@ function App() {
         <Routes>
           <Route path='/' element={<Home></Home>}></Route>
           <Route path='/home' element={<Home></Home>}></Route>
+          <Route path='/inventory/:inventoryId' element={
+            <RequireAuth>
+              <Inventory></Inventory>
+            </RequireAuth>
+          }></Route>
           <Route path='/manageitems' element={
             <RequireAuth>
               <ManageItems></ManageItems>

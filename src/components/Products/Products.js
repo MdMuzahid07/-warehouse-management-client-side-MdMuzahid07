@@ -16,14 +16,14 @@ const Products = () => {
     return (
         <div className='container my-5'>
             <div className="row">
-                <div className="col-md-8">
+                <div className="col-sm-12 col-md-8 col-lg-8">
                     <div className="custom-card text-center">
                         {
                             products?.map((product) => <AllProducts key={product._id} product={product} />)
                         }
                     </div>
                 </div>
-                <div className="col-md-4">
+                <div className="col-sm-12 col-md-4 col-lg-4">
                     <div className="custom-slider">
                         <Slider></Slider>
                     </div>
