@@ -7,19 +7,19 @@ const AllProducts = ({ product }) => {
 
     const navigate = useNavigate();
 
-    const navigateToManageProduct = (id) => {
+    const navigateToManageInventory = (id) => {
         navigate(`/inventory/${id}`)
     }
 
     return (
         <div>
             <div className="custom-css card">
-                <img src={picture} alt="product-img" />
+                <img className='img-fluid w-100' src={picture} alt="product-img" />
                 <hr />
                 <p>Brand: {name}</p>
                 <p>{description}</p>
                 <p>Price:$ {price}</p>
-                <button className='btn btn-warning' onClick={() => navigateToManageProduct(_id)}>Update</button>
+                <button className='btn btn-warning' onClick={() => navigateToManageInventory(_id)}>Update</button>
             </div>
         </div>
     );
