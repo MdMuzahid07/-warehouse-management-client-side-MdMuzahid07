@@ -22,9 +22,9 @@ const Inventory = () => {
     // to update info 
     const { register, handleSubmit } = useForm();
 
-    const onSubmit = data => {
+    const onSubmit = update => {
 
-        console.log(data)
+        console.log(update)
 
         const url = `https://evening-stream-47588.herokuapp.com/product/${inventoryId}`;
         fetch(url, {
@@ -32,7 +32,7 @@ const Inventory = () => {
             headers: {
                 'content-type': 'application/json'
             },
-            body: JSON.stringify(data)
+            body: JSON.stringify(update)
         })
             .then(response => response.json())
             .then(result => {
@@ -56,13 +56,13 @@ const Inventory = () => {
                     <h5 className='text-white'>Supplier: {product?.supplier}</h5>
                     <p className='text-white'>Product Quantity:{product?.quantity}</p>
                     <div className='d-flex mt-5'>
-                        <form onSubmit={handleSubmit(onSubmit)}>
+                        <form className='d-flex align-items-center' onSubmit={handleSubmit(onSubmit)}>
                             <input className='p-1 quantity-input' type='number' placeholder='quantity' {...register("quantity",)} />
+                            <input className='w-100 mb-2 rounded p-1 input' value="Stock Update" type="submit" />
                         </form>
 
-                        <div className='d-flex btns'>
-                            <button className='inventory-btn rounded-pill ms-2'>Stock</button>
-                            <button><Link to='/manageitems'>Add Product</Link></button>
+                        <div className=' d-flex btns'>
+                            <button><Link  className='text-white' to='/manageitems'>Add Product</Link></button>
                         </div>
                     </div>
                 </div>
