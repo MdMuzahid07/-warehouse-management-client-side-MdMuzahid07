@@ -10,6 +10,7 @@ import Error from './components/Error/Error';
 import Products from './components/Products/Products';
 import ManageItems from './components/ManageItems/ManageItems';
 import MyItems from './components/MyItems/MyItems';
+import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-bootstrap';
 import RequireAuth from './components/RequireAuth/RequireAuth';
 import Inventory from './components/HomeComponents/Inventory/Inventory';

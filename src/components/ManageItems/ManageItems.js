@@ -4,36 +4,20 @@ import './ManageItems.css';
 
 const ManageItems = () => {
 
+    const { register, handleSubmit } = useForm();
 
-
-
-
-
-    const handleOnSubmit = event => {
-
-        event.preventDefault();
-
-        const name = event.target.name.value;
-        const description = event.target.description.value;
-        const picture = event.target.picture.value;
-        const price = event.target.picture.value;
-        const supplier = event.target.supplier.value;
-
-        const data = {name, description, picture, price, supplier};
-
-
-
+    const onSubmit = data => {
         const url = `http://localhost:5000/product`;
         fetch(url, {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json',
+                'content-type': 'application/json'
             },
-            body: JSON.stringify(data)
+            body: JSON.stringify(data[0])
         })
             .then(response => response.json())
-            .then(product => {
-
+            .then(result => {
+                console.log(result)
             })
 
     };
@@ -48,15 +32,15 @@ const ManageItems = () => {
                     </div>
                     <div className="col-md-6 bg-dark p-3 text-white">
                         <h4 className='text-warning  mt-3'>Upload Products</h4>
-                        <form className='d-flex flex-column' onSubmit={handleOnSubmit}>
-                            <input className='border-0 p-1 my-2 rounded' type="text" name='name' placeholder="product-name" id="" required />
-                            <input className='border-0 p-1 mb-2 rounded' type="text" name='description' placeholder="product-description" id="" required />
-                            <input className='border-0 p-1 mb-2 rounded' type="text" name='picture' placeholder="product-picture" id="" required />
-                            <input className='border-0 p-1 mb-2 rounded' type="number" name='price' placeholder="product-price" id="" required />
-                            <input className='border-0 p-1 mb-2 rounded' type="text" name='supplier' placeholder="product-supplier" id="" required />
-
-                            <button className='button border-0 rounded' type='submit'>Add Product</button>
+                        <form onSubmit={handleSubmit(onSubmit)}>
+                            <input className='w-100 mb-2 rounded p-1' placeholder='product name' {...register("name", { required: true})} />
+                            <input className='w-100 mb-2 rounded p-1' type="number" placeholder='product price' {...register("price" ,{ required: true})} />
+                            <input className='w-100 mb-2 rounded p-1' placeholder='image url' {...register("picture", { required: true})} />
+                            <input className='w-100 mb-2 rounded p-1' placeholder='description' {...register("description", { required: true})} />
+                            <input className='w-100 mb-2 rounded p-1' placeholder='supplier' {...register("supplier", )} />
+                            <input className='w-100 mb-2 rounded p-1' value="submit" type="submit" />
                         </form>
+
                     </div>
                 </div>
             </div>
