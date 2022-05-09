@@ -8,13 +8,13 @@ const Products = () => {
     const [products, setProducts] = useState();
 
     useEffect(() => {
-        fetch('http://localhost:5000/product')
+        fetch('https://evening-stream-47588.herokuapp.com/product')
         .then(response => response.json())
         .then(data => setProducts(data))
     },[])
 
     return (
-        <div className='container my-5'>
+        <div className='container my-5 pt-5'>
             <div className="row">
                 <div className="col-sm-12 col-md-8 col-lg-8">
                     <div className="custom-card text-center">

@@ -57,7 +57,6 @@ const MyItems = () => {
                                 <td><img src={product.picture} alt="" /></td>
                                 <td>{product.price}</td>
                                 <td><button onClick={() => handleDeleteProduct(product._id)}>Delete</button>
-                                    <button  className='btn'>Update</button>
                                 </td>
                             </tr>
                         </tbody>

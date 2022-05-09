@@ -31,9 +31,9 @@ const SignUp = () => {
           toast(error)
       }
 
-
       if(user || guser) {
           toast('SignUp Complete')
+          navigate('/home')
       }
       if(error || gerror) {
           if(error) {
