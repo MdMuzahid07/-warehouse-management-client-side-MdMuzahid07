@@ -7,11 +7,13 @@ const Inventory = () => {
 
     const { inventoryId } = useParams();
 
+    const [quantity, setQuantity] = useState(false);
+
 
     const [product, setProduct] = useState();
 
     useEffect(() => {
-        const url = `https://evening-stream-47588.herokuapp.com/product/${inventoryId}`;
+        const url = `https://limitless-cove-08665.herokuapp.com/product/${inventoryId}`;
         fetch(url)
             .then(response => response.json())
             .then(data => setProduct(data))
@@ -24,9 +26,11 @@ const Inventory = () => {
 
     const onSubmit = update => {
 
+        setQuantity(true)
+
         console.log(update)
 
-        const url = `https://evening-stream-47588.herokuapp.com/product/${inventoryId}`;
+        const url = `https://limitless-cove-08665.herokuapp.com/product/${inventoryId}`;
         fetch(url, {
             method: 'PUT',
             headers: {
@@ -56,6 +60,7 @@ const Inventory = () => {
                     <h5 className='text-white'>Supplier: {product?.supplier}</h5>
                     <p className='text-white'>Product Quantity:{product?.quantity}</p>
                     <div className='d-flex mt-5'>
+
                         <form className='d-flex align-items-center' onSubmit={handleSubmit(onSubmit)}>
                             <input className='p-1 quantity-input' type='number' placeholder='quantity' {...register("quantity",)} />
                             <input className='w-100 mb-2 rounded p-1 input' value="Stock Update" type="submit" />

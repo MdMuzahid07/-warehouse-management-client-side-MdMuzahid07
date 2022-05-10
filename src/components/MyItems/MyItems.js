@@ -7,7 +7,7 @@ const MyItems = () => {
     const [products, setProducts] = useState();
 
     useEffect(() => {
-        fetch('http://localhost:5000/product')
+        fetch('https://limitless-cove-08665.herokuapp.com/product')
             .then(response => response.json())
             .then(data => setProducts(data))
     }, []);
@@ -20,7 +20,7 @@ const MyItems = () => {
         const proceed = window.confirm('Delete a product?');
 
         if (proceed) {
-            const url = `http://localhost:5000/product/${id}`;
+            const url = `https://limitless-cove-08665.herokuapp.com/product/${id}`;
             fetch(url, {
                 method: 'DELETE'
             })
