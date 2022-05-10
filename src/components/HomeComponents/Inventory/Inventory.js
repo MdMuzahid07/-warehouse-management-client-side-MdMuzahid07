@@ -7,9 +7,6 @@ const Inventory = () => {
 
     const { inventoryId } = useParams();
 
-    const [quantity, setQuantity] = useState(false);
-
-
     const [product, setProduct] = useState();
 
     useEffect(() => {
@@ -26,7 +23,6 @@ const Inventory = () => {
 
     const onSubmit = update => {
 
-        setQuantity(true)
 
         console.log(update)
 
